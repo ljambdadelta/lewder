@@ -3,7 +3,8 @@
 DEFAULT_FOLDER=~/Screenshots
 FOLDER=$DEFAULT_FOLDER
 STATUS_FILE_GONNA_BE_USED="YES"
-LINK_TO_UPLOAD='https://lewd.se/api.php?d=upload-tool'
+LINK_TO_UPLOAD='https://lewd.se/upload'
+TOKEN=""
 
 
 
@@ -63,7 +64,7 @@ function check_if_filenames_are_equal () {
 
 upload_current() {
  echo "${file_to_upload}" 
- answer="$(curl --progress-bar -F file=@"${file_to_upload}" "${LINK_TO_UPLOAD}")"
+ answer="$(curl --progress-bar -F file=@"${file_to_upload}" -H "token: ${LINK_TO_UPLOAD}" "${LINK_TO_UPLOAD}")"
  echo "$answer" | xclip -selection cli
  echo
  echo $answer
